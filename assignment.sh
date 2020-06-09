@@ -68,10 +68,17 @@ do
 		result=$(echo "$num1 * $num2" | bc)
 		echo "$num1*$num2=$result"
 
-	#Calculate result of division if user input 4 on operator
+	#If user input 4 on operator (select division operator)
 	else
-		result=$(echo "$num1 / $num2" | bc)
-		echo "$num1/$num2=$result"
+		#Let user know about number cannot be divided by 0 (if user input '0' on num2)
+		if [ "$num2" == 0 ]
+		then
+			echo "Number cannot be divided by 0";
+		#Calculate result of division
+		else
+			result=$(echo "$num1 / $num2" | bc)
+			echo "$num1/$num2=$result"
+		fi
 	fi
 
 	#Ask user would like to stop the calculator. User requires to type 'y' to stop the calculator.
